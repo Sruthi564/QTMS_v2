@@ -1,49 +1,28 @@
 from collections import OrderedDict
 
 
-ACROPOLIS_NAHV_JPS_MASTER = {
-    "NAHV-GOS-OPT": [
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LLC_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b65987b48b1e881694e5b", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LLC_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b66107b48b1ec81ce058a", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LLC_3_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b663c7b48b1ea654b8f2f", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LLC_4_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b668f7b48b1f0c1249c8a", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LLC_5_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b680c7b48b1f95ac37469", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LLC_6_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b685d7b48b1fdd8ed2db1", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WLC_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b68ac7b48b1fcbe54eca5", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WLC_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7cd5a27b48b152d3fa2d24", "FQA": "bhawani.singh@nutanix.com"},
-        #{"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WI_1_master", "throttle": [u"throttle_tests_1"], "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b68d57b48b1fdd8ed2e18", "FQA": "bhawani.singh@nutanix.com"},
-        #{"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WI_2_master", "throttle": [u"throttle_tests_1"], "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7d10e57b48b1c16e02ab03", "FQA": "bhawani.singh@nutanix.com"},
-        #{"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LI_1_Nested_master", "throttle": [u"throttle_tests_1"], "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5e60c8e88e79ce320a681733", "FQA": "bhawani.singh@nutanix.com"},
-        #{"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LI_2_Nested_master", "throttle": [u"throttle_tests_1"], "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5e60cdfed24d820c49f0f97b", "FQA": "bhawani.singh@nutanix.com"},
-        #{"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LI_3_master", "throttle": [u"throttle_tests_1"], "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6a3c7b48b10651cbad74", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6b737b48b10ebf9431c1", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6bc37b48b10070fec1ec", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_3_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6bf17b48b10ebf9431c5", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_4_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6c107b48b10a1c7ec7af", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_5_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6c447b48b1073d77cce1", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_6_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6c5d7b48b1168bf48e2a", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LVDT_7_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6c917b48b1185b2d72d0", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WVDT_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6cec7b48b10ebf9431ce", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WVDT_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6d057b48b11a9e7e9399", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WVT_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6d557b48b11a9e7e93a0", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WVT_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7d135e7b48b1e941948339", "FQA": "bhawani.singh@nutanix.com"}
-    ],
-    "NAHV-GOT-OPT-1-NODE": [
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WI_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b68d57b48b1fdd8ed2e18", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_WI_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7d10e57b48b1c16e02ab03", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LI_1_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b690a7b48b1fe3e9e1735", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LI_2_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6a157b48b1073d77ccc3", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "JP_NAME": "Regression_Acropolis_MTS_Nutest_Guest_OS_LI_3_master", "max_dep": [u'max_deployments__1'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5d7b6a3c7b48b10651cbad74", "FQA": "bhawani.singh@nutanix.com"},
 
-    ],
+ACROPOLIS_NAHV_JPS_MASTER = {
     "NAHV-GOS": [
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LI_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5daeacc17b48b161d5baf1dd", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WI_1_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5daff2857b48b18055b0a426", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db167d97b48b1eeff499ed4", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db270747b48b15a59879f4c", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc8f9de7b48b1361648b047", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"}
+       # {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVT_1_master",
+       #  "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os",
+       #  "category": 'reg-handedover', "JP_ID": "5e3a657dd24d8234685553f9", "FQA": "bhawani.singh@nutanix.com"},
+       # {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WI_1_master",
+       # "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os",
+       # "category": 'reg-handedover', "JP_ID": "5daff2857b48b18055b0a426", "FQA": "bhawani.singh@nutanix.com"},
+
+      # {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WLC_new1_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5ee9bef48e79ce8896ce24ac", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LLC_New1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5ee9c8f08e79ce6361d09af0", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVDT_New1_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5ee9ecd0d24d8210af0a5b22", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_new1_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5ee9f3908e79ce887f7468ab", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_new2_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "ahv-guest-os",  "category": 'reg-handedover', "JP_ID": "5ee9f4b4d24d822740ed17f1", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_new3_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5eec7d828e79ce6361d13e86", "FQA": "bhawani.singh@nutanix.com"},
+
+      #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LI_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5daeacc17b48b161d5baf1dd", "FQA": "bhawani.singh@nutanix.com"},
+       #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db167d97b48b1eeff499ed4", "FQA": "bhawani.singh@nutanix.com"},
+       # {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LLC_1_master", "throttle": [u"throttle_tests__10"], "max_dep": [u'max_deployments__10'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db270747b48b15a59879f4c", "FQA": "bhawani.singh@nutanix.com"},
+       #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc8f9de7b48b1361648b047", "FQA": "bhawani.singh@nutanix.com"},
+       #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"},
     ],
     "NAHV-PC": [
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_FEAT_6387_RBAC_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e4e4efad24d825d1dbd95ed", "FQA": "bhawani.singh@nutanix.com"},
@@ -52,43 +31,78 @@ ACROPOLIS_NAHV_JPS_MASTER = {
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Uhura_GuestCustomization_REST_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "uhura-rest", "category": 'reg-handedover', "JP_ID": "5e202402d24d826a0b6c9434", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Uhura_FEAT-6978_v3_clone_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "uhura-clone", "category": 'reg-handedover', "JP_ID": "5e2023cbd24d82df7c62391f", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_Metropolis_xi_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis-xi", "category": 'reg-handedover', "JP_ID": "5e1c8ed38e79ce195eb42e57", "FQA": "bhawani.singh@nutanix.com"},
+
+        {"branch": "master", "rdm_v": ["rdm__virtual"],"JP_NAME": "Regression_Acropolis_MTS_Nutest_RBAC_snapshot_api_nested_master", "throttle": [u"throttle_tests__2"],"max_dep": [u'max_deployments__2'], "sub-component": "rbac-api", "category": 'reg-handedover',"JP_ID": "5ef0dac42bc0c465e171c034", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"],"JP_NAME": "Regression_Acropolis_MTS_Nutest_RBAC_SNAPSHOT_nested-master", "throttle": [u"throttle_tests__2"],"max_dep": [u'max_deployments__2'], "sub-component": "rbac-snapshot", "category": 'reg-handedover',"JP_ID": "5ef0db2f2bc0c4729145a8fe", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"],"JP_NAME": "Regression_Acropolis_MTS_Nutest_OVA_RBAC_nested-master","throttle": [u"throttle_tests__2"],"max_dep": [u'max_deployments__2'], "sub-component": "ova-rbac", "category": 'reg-handedover',"JP_ID": "5ef0db912bc0c4387f5de314", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"],"JP_NAME": "Regression_Acropolis_MTS_Nutest_OVA_AHV_AHV_Nested","throttle": [u"throttle_tests__7"],"max_dep": [u'max_deployments__7'], "sub-component": "ova-ahv", "category": 'reg-handedover',"JP_ID": "5ef0dbf48e79cea1f19be6ce", "FQA": "bhawani.singh@nutanix.com"},
+
+
+
     ],
+
     "NAHV-CATALOG-PE": [
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_UI_Image_PE_Nested_master", "throttle": [u"throttle_tests__4"], "max_dep": [u'max_deployments__4'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e273f07d24d82e49424cdac", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_PE_Nested_master", "throttle": [u"throttle_tests__4"], "max_dep": [u'max_deployments__4'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e402b4a8e79ce6411a50ef8", "FQA": "bhawani.singh@nutanix.com"}
     ],
     "NAHV-CATALOG-PC": [
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_7112_np_Catalog_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e2e4c362bc0c406b53c2c15", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e402dbcd24d82de4de7f545", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_Cluster_Selection_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e4d07f42bc0c466b77aac34", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_Optimized_Checkout_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e4d081f2bc0c466a452ee65", "FQA": "bhawani.singh@nutanix.com"}
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_remote_seed_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5efdb8db8e79ceb94f05a30b", "FQA": "bhawani.singh@nutanix.com"},
+
+        # {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_7112_np_Catalog_Nested_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e2e4c362bc0c406b53c2c15", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_Nested_master", "throttle": [u"throttle_tests__10"], "max_dep": [u'max_deployments__10'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e402dbcd24d82de4de7f545", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_Cluster_Selection_Nested_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e4d07f42bc0c466b77aac34", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_XI_Catalog_Optimized_Checkout_Nested_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__5'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e4d081f2bc0c466a452ee65", "FQA": "bhawani.singh@nutanix.com"}
     ],
     "NAHV-PE": [
+        {"branch": "master", "rdm_v": ["rdm__virtual"],"JP_NAME": "Regression_Ergon_without_NS_master", "throttle": [u"throttle_tests__2"],"max_dep": [u'max_deployments__2'], "sub-component": "ergon", "category": 'reg-handedover',"JP_ID": "5f50a859d24d8217bbb12c3e", "FQA": "bhawani.singh@nutanix.com"},
+
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_AHV_Mgmt_Acli_1_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e21ee44d24d82df763a4a70", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Uhura__AHV__REST_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e200071d24d82df815b7a22", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Uhura__AHV__RPC_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e200143d24d82df8a678ee5", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_Uhura_Audit_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e1c8bb38e79ce222a5ba7f7", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_Acropolis_Vm_Management_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e1c8c2d2bc0c45737042d7f", "FQA": "bhawani.singh@nutanix.com"},
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_V3_Vm_Management_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e1fa5ae8e79ce1943ac6089", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_Webhooks_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e1c8d6f8e79ce1956c0b196", "FQA": "bhawani.singh@nutanix.com"},
     ],
     "NAHV-SCHEDULER": [
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_Affinity_scheduling_policies_Nested_master", "throttle": [u"throttle_tests__3"], "max_dep": [u'max_deployments__3'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e1fae488e79ce1956c17c38", "FQA": "bhawani.singh@nutanix.com"}
     ],
     "NAHV-UI": [
-        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_MTS_Nutest_VM_Management_PE_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e27b4d1d24d82e4b15b34c5", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "master_pe_nahv", "throttle": [u"throttle_tests__20"], "max_dep": [u'max_deployments__20'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5d11b4187b48b19a8dc6e9e1", "FQA": "bhawani.singh@nutanix.com"},
         {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Uhura__AHV__UI_Nested_master", "throttle": [u"throttle_tests__2"], "max_dep": [u'max_deployments__2'], "sub-component": "metropolis", "category": 'reg-handedover', "JP_ID": "5e20035c8e79ce1943ac70bc", "FQA": "bhawani.singh@nutanix.com"}
     ],
-    "NAHV-RBAC-PC": []
+
 }
 
-ACROPOLIS_JPS_5_18 = {}
 
-ACROPOLIS_JPS_5_20 = {}
+
+ACROPOLIS_JPS_5_18 = {
+    "NAHV-GOS": [
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LI_1_Nested_5.18", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5ec63d888e79ce43bcca3c25", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WI_1_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5daff2857b48b18055b0a426", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db167d97b48b1eeff499ed4", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db270747b48b15a59879f4c", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc8f9de7b48b1361648b047", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"},
+        #{"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"}
+    ]}
+
+
+
+ACROPOLIS_JPS_5_15_1 = {
+
+"NAHV-GOS": [
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LI_1_Nested_5.18", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5ec63d888e79ce43bcca3c25", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WI_1_master", "throttle": [u"throttle_tests__5"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5daff2857b48b18055b0a426", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db167d97b48b1eeff499ed4", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LLC_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5db270747b48b15a59879f4c", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_LVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc8f9de7b48b1361648b047", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVDT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"},
+        {"branch": "master", "rdm_v": ["rdm__virtual"], "JP_NAME": "Regression_Acropolis_NAHV_Guest_OS_WVT_1_master", "throttle": [u"throttle_tests__7"], "max_dep": [u'max_deployments__7'], "sub-component": "ahv-guest-os", "category": 'reg-handedover', "JP_ID": "5dc926887b48b106a29b144d", "FQA": "bhawani.singh@nutanix.com"}
+    ]
+}
 
 BRANCH_METADATA = {"MASTER": ACROPOLIS_NAHV_JPS_MASTER,
-                   "5.18": ACROPOLIS_JPS_5_18,
-                   "5.20": ACROPOLIS_JPS_5_20}
+                   "5.19": ACROPOLIS_NAHV_JPS_MASTER,
+                   "5.15.1": ACROPOLIS_JPS_5_15_1}
 
 
 
@@ -1400,8 +1414,8 @@ UHURA_JPS_5_17 = {
 #ACROPOLIS_JPS_LTS = ACROPOLIS_JPS_LTS_5_5_8.copy()
 #UHURA_JPS_LTS = UHURA_JPS_LTS_5_5_8.copy()
 
-UHURA_JPS_LTS = UHURA_JPS_LTS_5_5_9.copy()
-ACROPOLIS_JPS_LTS = ACROPOLIS_JPS_5_5_9.copy()
+# UHURA_JPS_LTS = UHURA_JPS_LTS_5_5_9.copy()
+# ACROPOLIS_JPS_LTS = ACROPOLIS_JPS_5_5_9.copy()
 
 
 # ACROPOLIS_JPS_MAJOR = ACROPOLIS_JPS_5_11.copy()
@@ -1411,18 +1425,18 @@ ACROPOLIS_JPS_LTS = ACROPOLIS_JPS_5_5_9.copy()
 # UHURA_JPS_MAJOR = UHURA_JPS_5_16.copy()
 
 
-UHURA_JPS_MAJOR = UHURA_JPS_5_17.copy()
-ACROPOLIS_JPS_MAJOR = ACROPOLIS_JPS_5_17.copy()
+# UHURA_JPS_MAJOR = UHURA_JPS_5_17.copy()
+# ACROPOLIS_JPS_MAJOR = ACROPOLIS_JPS_5_17.copy()
 
 # ACROPOLIS_JPS_MINOR = ACROPOLIS_JPS_5_11_1.copy()
 # UHURA_JPS_MINOR = UHURA_JPS_5_11_1.copy()
 
 
-ACROPOLIS_JPS_MINOR = ACROPOLIS_JPS_5_10_9.copy()
+#ACROPOLIS_JPS_MINOR = ACROPOLIS_JPS_5_10_9.copy()
 # UHURA_JPS_MINOR = UHURA_JPS_5_10_9.copy()
 
 #ACROPOLIS_JPS_MINOR = ACROPOLIS_JPS_5_11_2.copy()
 
 
 #ACROPOLIS_JPS_MINOR = ACROPOLIS_JPS_5_11_3.copy()
-UHURA_JPS_MINOR = UHURA_JPS_5_11_3.copy()
+# UHURA_JPS_MINOR = UHURA_JPS_5_11_3.copy()
