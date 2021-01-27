@@ -355,6 +355,8 @@ class GOSPayload(MasterPayload):
 
         self.nos_branch = kwargs.get("nos_branch")
         self.nos_commit = kwargs.get("nos_commit")
+        self.obelix_branch = kwargs.get("obelix_branch")
+        self.nutest_branch = kwargs.get("nutest_branch", self.NUTEST_BRANCH)
         self.nutest_commit = kwargs.get("nutest_commit", self.NUTEST_COMMIT)
         self.email_ids = kwargs.get("email_ids", self.EMAILS)
         self.task_priority = kwargs.get("priority", self.TASK_PRIORITY)
@@ -412,3 +414,17 @@ class GOSPayload(MasterPayload):
         }
         return self.REQUESTED_HARDWARE
 
+    @property
+    def get_jita_plugins(self):
+        self.PLUGINS = {
+            u'post_run': [{u'args': {},
+                          u'description': u'Sends mail to the recipients.',
+                          u'stage': u'post_run',
+                          u'name': u'EmailPlugin'},
+                         {u'args': {u'branch': self.obelix_branch},
+                          u'description': u'Updates the branch info of the test result document with the info provided in args',
+                          u'name': u'UpdateBranchPlugin',
+                          u'stage': u'post_run'}],
+            u'pre_run': self.pre_run
+        }
+        return self.PLUGINS
