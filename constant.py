@@ -16,7 +16,9 @@ KWARGS_5_18 = {
     "build_type": 'release',
     "nutest_branch": "euphrates-5.18-stable",
     "obelix_branch": "dogmatix"
+
 }
+
 KWARGS_5_19 = {
     "branch": "5.19",
     "pc_branch": "euphrates-5.19-stable-pc-0",
@@ -26,7 +28,11 @@ KWARGS_5_19 = {
     "build_type": 'release',
     "nutest_branch": "euphrates-5.19-stable",
     "obelix_branch": "dogmatix_5.19"
+
+
 }
+
+
 KWARGS_5_15_1 = {
     "branch": "5.15.1",
     "nos_branch": "euphrates-5.15.1-stable",
