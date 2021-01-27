@@ -433,4 +433,3 @@ if __name__ == '__main__':
 
     qtms_runner = QTMSRunner(rel_class, qtms_operations)
     qtms_runner.qtms_run()
-
