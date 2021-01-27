@@ -10,17 +10,12 @@ from base64 import b64decode
 from requests.auth import HTTPDigestAuth
 from collections import OrderedDict
 from functools import wraps
-
-
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-JITA_USER = b64decode('YWdhdmVfYm90')
-JITA_PASSWORD = b64decode('YWRtaW4=')
-
-
+JITA_USER = 'svc.qtms.it.okta'
+JITA_PASSWORD = 'sYpuc3La8WtB?xbvJKNA'
 def retry(exceptions, tries=4, delay=3, backoff=2, logger=None):
     """
     Retry calling the decorated function using an exponential backoff.
-
     Args:
         exceptions: The exception to check. may be a tuple of
             exceptions to check.
@@ -31,7 +26,6 @@ def retry(exceptions, tries=4, delay=3, backoff=2, logger=None):
         logger: Logger to use. If None, print.
     """
     def deco_retry(f):
-
         @wraps(f)
         def f_retry(*args, **kwargs):
             mtries, mdelay = tries, delay
@@ -48,15 +42,10 @@ def retry(exceptions, tries=4, delay=3, backoff=2, logger=None):
                     mtries -= 1
                     mdelay *= backoff
             return f(*args, **kwargs)
-
         return f_retry  # true decorator
-
     return deco_retry
-
-
 class Jita(object):
     """Class for performing Jita operations"""
-
     def __init__(self):
         self.jita_host = 'jita.eng.nutanix.com'
         self.jita_api = 'api/v2'
@@ -65,12 +54,10 @@ class Jita(object):
         self.tasks_ids = []
         self.jps_not_triggered = []
         self.pc_url = u'http://endor.dyn.nutanix.com/builds/PC-builds/{}/{}/release/'
-
     def build_jita_url(self, url_param):
         jita_query = 'https:' + '//' + self.jita_host + '/' + self.jita_api + '/' + \
                      url_param
         return jita_query
-
     def get_job_profile_id(self, jp_name):
         r = self.get_jita_job_profile(jp_name)
         if r is not None:
@@ -85,7 +72,6 @@ class Jita(object):
                     return None
         else:
             return None
-
     def get_jita_job_profile(self, jp_name):
         params ={
             "raw_query": json_util.dumps({
@@ -100,7 +86,6 @@ class Jita(object):
         except requests.RequestException as e:
             print("Bad Request for JP: {}, error : {}".format(jp_name, str(e)))
         return None
-
     def fetch_job_profile_payload(self, jp_id):
         url = self.build_jita_url('job_profiles') + '/' + jp_id
         if self.session is not None:
@@ -110,7 +95,6 @@ class Jita(object):
                 payload = response["data"]
                 return payload
         return None
-
     def update_job_profile_payload(self, jp_id, jp_name, payload):
         #print "Payload ::: {}\n".format(payload)
         if jp_id is not None:
@@ -130,7 +114,6 @@ class Jita(object):
                 print('Session not established')
         else:
             print("Job Profile ID is: {} for JP: {}".format(jp_id, jp_name))
-
     @staticmethod
     def establish_session():
         try:
@@ -141,7 +124,6 @@ class Jita(object):
         except Exception as e:
             print("Session Error: {}".format(str(e)))
         return None
-
     def get_test_history(self, test_name, limit=120):
         data = []
         url = 'https://jita.eng.nutanix.com/api/v1/agave_tests/history'
@@ -162,7 +144,6 @@ class Jita(object):
             }
             if start == limit//25 + 1:
                 params["limit"] = remainder
-
             try:
                 r = requests.get(url=url, params=params, verify=False)
                 if r.ok:
@@ -179,9 +160,7 @@ class Jita(object):
                 print(e)
                 return []
             start += 1
-
         return data
-
     @retry((ConnectionError, Timeout))
     def trigger_job_profile(self, jp_name, jp_id, fqa_id, payload, category=None, sub_component=None):
         url = self.build_jita_url('job_profiles') + '/' + jp_id + '/' + 'trigger'
@@ -207,7 +186,6 @@ class Jita(object):
                 self.jps_not_triggered.append({jp_name: jp_id})
         else:
             print('Session not established')
-
     @staticmethod
     def fetch_status_task_id(task_id):
         status = ""
@@ -224,7 +202,6 @@ class Jita(object):
             except Exception as e:
                 print("fetch_status_task_id, general exception caught is : {}".format(str(e)))
                 return status
-
             if r.ok:
                 r_data = json.loads(r.content)
                 print("fetch_status_task_id, received a response...")
@@ -238,10 +215,8 @@ class Jita(object):
         else:
             print("fetch_status_task_id", "Param task id is mandatory")
         return status
-
     def get_smoke_passed_build(self):
         pass
-
     def get_jp_name_from_jita_task(self, task_id):
         if task_id:
             url = "https://10.4.66.84/api/v2/agave_tasks/%s" % task_id
@@ -252,12 +227,10 @@ class Jita(object):
                 print("Request exception observed: {} while getting job profile name from task id".format(str(e)))
             except Exception as e:
                 print("Request exception observed: {} while getting job profile name from task id".format(str(e)))
-
             if r.ok:
                 r_data = json.loads(r.content)
                 print("Getting job profile name from task id: {}".format(task_id))
                 return r_data["data"]
-
     def clone_job_profile(self, payload1, payload2, clone_from_branch, clone_to_branch, sub_component, category, max_dep):
         if self.session is not None:
             payload1.update(payload2)
@@ -295,7 +268,6 @@ class Jita(object):
             except Exception as e:
                 print("Failed to get smoke passed build: {}".format(str(e)))
                 return None
-
             if r.ok:
                 r_data = json.loads(r.content)
                 if r_data['success']:
@@ -303,7 +275,6 @@ class Jita(object):
                     return r_data['data']['commit_id']
         else:
             return None
-
     def get_jita_testset(self, test_set_name):
         params ={
             "raw_query": json_util.dumps({
@@ -324,7 +295,6 @@ class Jita(object):
         else:
             print("Failed to get Test Set Details")
             return None
-
     def create_compatilibility_job_profiles(self, component, sample_payload,
                                             payload, component_values, matrix, pc_build):
         if self.session is not None:
@@ -339,7 +309,7 @@ class Jita(object):
             }
             payload['cluster_selection'] = {
                 u'pool_name': component_values[component][0]['pool_name'],
-                u'by_node_pool': True
+                u'by_global_pool': True
             }
             test_set_id = self.get_jita_testset(component_values[component][0]['test_set'])
             if test_set_id is not None:
@@ -382,7 +352,6 @@ class Jita(object):
         else:
             print("Create of JP: {} Failed".format(payload['name']))
             return None
-
     def mark_task_id_official(self, task_id):
         if self.session is not None:
             url = "https://jita.eng.nutanix.com/api/v2/agave_tasks/"+task_id+"/mark_official"
@@ -403,7 +372,6 @@ class Jita(object):
         else:
             print("Cannot Mark task id Official: {}".format(task_id))
             return None
-
     def mark_jita_tasks_official(self, tasks):
         task_result = dict.fromkeys(tasks)
         if not tasks:
@@ -415,7 +383,6 @@ class Jita(object):
                     task_status = self.mark_task_id_official(task_id)
                     task_result[task_id] = task_status
                     tasks.remove(task_id)
-
     def kill_task_id(self, task_id):
         if self.session is not None:
             url = "https://jita.eng.nutanix.com/api/v2/agave_tasks/" + task_id + "/kill"
@@ -432,7 +399,6 @@ class Jita(object):
                 print("Tasks ID: {} api call failed".format(task_id))
         else:
             print("Cannot kill tasks id: {}".format(task_id))
-
     def kill_jita_tasks(self, tasks):
         task_result = dict.fromkeys(tasks)
         if not tasks:
@@ -449,37 +415,9 @@ class Jita(object):
                     else:
                         self.kill_task_id(task_id)
             print("Tasks Result: {}".format(task_result))
-
     def validate_job_profile_payload(self):
         pass
-
     def update_test_set(self):
         pass
-
-
 if __name__ == '__main__':
     pass
-    # task_id = '5cc739837b48b1017b67ba3c'
-    # jita = Jita()
-    # jita.mark_task_official(task_id)
-# #    jita.fetch_status_task_id(task_id)
-#     res = jita.get_jp_name_from_jita_task(task_id)
-#     print res['label'], res['_id'], res['email']
-    #f_tests = ['uhura.test_vm_nic_create_update_post_poweron.TestVMPoweronNicAddUpdate.test_vm_nic_add_get_delete___ahv_rpc', 'uhura.test_vm_nic_create_update_post_poweron.TestVMPoweronNicAddUpdate.test_vm_nic_add_get_delete___ahv_rpc', 'uhura.test_vm_nic_create_update_post_poweron.TestVMPoweronNicAddUpdate.test_vm_nic_add_get_delete___ahv_rpc', 'uhura.test_vm_nic_create_update_post_poweron.TestVMPoweronNicAddUpdate.test_vm_nic_add_get_delete___ahv_rpc', 'uhura.test_vm_sata_disk_cdrom_add_remove.TestVMSata.test_vm_sata_disk_cdrom_add_remove___ahv_rpc', 'uhura.test_vm_sata_disk_cdrom_add_remove.TestVMSata.test_vm_sata_disk_cdrom_add_remove___ahv_rpc', 'uhura.test_vm_sata_disk_cdrom_add_remove.TestVMSata.test_vm_sata_disk_cdrom_add_remove___ahv_rpc', 'uhura.test_vm_sata_disk_cdrom_add_remove.TestVMSata.test_vm_sata_disk_cdrom_add_remove___ahv_rpc', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_create_vm_different_users_different_projects', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_create_vm_different_users_different_projects', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_create_vm_different_users_different_projects', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_create_vm_different_users_different_projects', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_allow_all_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_allow_all_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_allow_all_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_allow_all_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_restrict_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_restrict_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_restrict_customization', 'uhura.ui.pc.test_pc_guest_customization.TestPCGuestCustomization.test_gc_ui_preparer_sysprep_restrict_customization', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_preparer_invalid_yaml', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_preparer_invalid_yaml', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_preparer_invalid_yaml', 'uhura.guest_customization.test_guest_customization.TestGuestCustomization.test_gc_rest_preparer_invalid_yaml']
-    # test_data = jita.get_test_history('acropolis.guest_os_cert.test_linux_virtual_device.LinuxVDTest.test_centos68')
-    # print(test_data)
-    # print(len(test_data))
-
-    # ignored_tests = []
-    # for test in f_tests:
-    #     t_data = jita.get_test_history(test)
-    #     for data in t_data:
-    #         try:
-    #             print(data["test"]["name"]+','+str(data["agave_task_id"]["$oid"])+','+str(data["branch"])+','+str(
-    #                 data["commit_id"])+','+
-    #                   str(data.get("start_time", None).get("$date", None))+','+str(
-    #                 data.get("end_time", None).get("$date", None))+','+
-    #                   str(data.get("run_duration", None))+','+str(data.get("status", None)))
-    #         except AttributeError:
-    #             ignored_tests.append(test)
-    # print("Failed tests: {}".format(ignored_tests))
