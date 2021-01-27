@@ -411,6 +411,3 @@ class GOSLIPayload(MasterPayload):
             }
         }
         return self.REQUESTED_HARDWARE
-
-
-
