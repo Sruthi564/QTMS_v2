@@ -183,7 +183,7 @@ class QTMS(object):
                     branch = self.reg_handedover_tasks[0][0]['branch']
                     #tasks = self.reg_handedover_tasks
                     #jita_task_link = self.reg_handedover_tasks_link
-                    emails = ['bhawani.singh@nutanix.com', 'velurusruthi.naidu@nutanix.com', 'ritopa.dey@nutanix.com']
+                    emails = ['saurabh.jain@nutanix.com', 'velurusruthi.naidu@nutanix.com', 'ritopa.dey@nutanix.com','bhawani.singh@nutanix.com']
                     email_text = 'NAHV Test Run Details'
                     email_msg = 'NAHV Test Run Details'
                     print("Sending email for Reg Handedover Test runs: {}".format(self.reg_handedover_tasks_link))
@@ -195,7 +195,7 @@ class QTMS(object):
                     branch = self.non_reg_handedover_tasks[0][0]['branch']
                     #tasks = self.non_reg_handedover_tasks
                     #jita_task_link = self.non_reg_handedover_tasks_link
-                    emails = ['bhawani.singh@nutanix.com', 'velurusruthi.naidu@nutanix.com', 'ritopa.dey@nutanix.com']
+                    emails = ['bhawani.singh@nutanix.com', 'velurusruthi.naidu@nutanix.com', 'ritopa.dey@nutanix.com','saurabh.jain@nutanix.com']
                     email_text = 'NAHV Test Run Details'
                     email_msg = 'NAHV Test Run Details'
                     print("Sending email for Non-Reg Handedover Test runs: {}".format(self.non_reg_handedover_tasks_link))
@@ -297,5 +297,3 @@ if __name__ == '__main__':
     #qtms_execute.mark_tasks_official(task_url)
 
 ###
-
-
