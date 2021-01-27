@@ -1,16 +1,15 @@
 
 from common_payload import MasterPayload
 from constant import BUILD_NOS_URL, BUILD_HYPERVISOR_URL
-
-
 class PCPayload(MasterPayload):
-
     def __init__(self, **kwargs):
         # GlobalPayloadParameters.__init__(self)
         MasterPayload.__init__(self)
-
         self.nos_branch = kwargs.get("nos_branch")
         self.nos_commit = kwargs.get("nos_commit")
+        self.pc_commit = kwargs.get("pc_commit")
+        self.pc_branch = kwargs.get("pc_branch")
+        self.nutest_branch = kwargs.get("nutest_branch", self.NUTEST_BRANCH)
         self.nutest_commit = kwargs.get("nutest_commit", self.NUTEST_COMMIT)
         self.email_ids = kwargs.get("email_ids", self.EMAILS)
         self.task_priority = kwargs.get("priority", self.TASK_PRIORITY)
@@ -23,8 +22,31 @@ class PCPayload(MasterPayload):
         self.hypervisor_url = kwargs.get("hypervisor_url", self.HYPERVISOR_URL)
         self.nos_url = kwargs.get("nos_url", self.NOS_URL)
         self.pc_url = kwargs.get("pc_url", self.PC_URL)
-
     def load_payload(self):
         super(PCPayload, self).load_payload()
         self.payload_map[u'resource_manager_json'] = self.get_pc_url
         return self.payload_map
+    @property
+    def get_requested_hardware(self):
+        self.REQUESTED_HARDWARE = {
+            u'hypervisor_version': u'branch_symlink',
+            u'hypervisor': u'kvm',
+            u'imaging_options': {
+                u'datacenter': {
+                    u'hyperv': {},
+                    u'kvm': {},
+                    u'vsphere': {},
+                    u'use_host_names': False
+                },
+            u'foundation_build_url': self.get_foundation_build_url,
+            u'min_host_cpu_cores': 30,
+            u'min_host_gb_ram': 64,
+            u'nos_url': self.get_nos_url,
+            u'redundancy_factor': u'default',
+            u'secondary_datacenters': {
+                u'vsphere': {}
+            },
+            u'hypervisor_url': self.get_hypervisor_url
+            }
+        }
+        return self.REQUESTED_HARDWARE
