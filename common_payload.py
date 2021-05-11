@@ -15,6 +15,7 @@ class BasePayload(object):
         self.AOS_REL_BRANCH = None
         self.PC_REL_BRANCH = None
         self.POOL_CATEGORY = ''
+        self.POOL_KIND = ''
         self.POOL_TYPE = ''
         self.PC_URL = ENDOR_PC_BUILD_URL
         self.PC_COMMIT_ID = None
@@ -61,10 +62,9 @@ class MasterPayload(GlobalPayloadParameters, BasePayload):
         GlobalPayloadParameters.__init__(self)
         BasePayload.__init__(self)
         self.POOL_TYPE = u'Nested'
+        self.POOL_KIND = u'PRIVATE_CLOUD'
         self.POOL_CATEGORY = u'general'
-        self.POOL_NAME = [
-            u'phx_bigbang_test'
-        ]
+        # self.POOL_NAME = [ u'phx_bigbang_test']
         # self.POOL_NAME = [u'AHV-REG-NESTED-POOL']
         self.payload_map = dict()
     def load_payload(self):
@@ -76,11 +76,13 @@ class MasterPayload(GlobalPayloadParameters, BasePayload):
         self.payload_map[u'plugins'] = self.get_jita_plugins
         self.payload_map['patch_url'] = self.get_nutest_patch_url
         self.payload_map[u'build_selection'] = self.get_build_selection
-        self.payload_map[u'cluster_selection'] = self.get_cluster_selection
+        # self.payload_map[u'cluster_selection'] = self.get_cluster_selection
+        self.payload_map[u'infra'] = self.get_infra
         self.payload_map[u'nutest_commit'] = self.get_nutest_commit
         self.payload_map[u'test_framework'] = None
         self.payload_map[u'nutest_branch'] = self.get_nutest_branch
         self.payload_map[u'skip_commit_id_validation'] = None
+        print(self.payload_map)
     @property
     def get_git(self):
         self.GIT = {
@@ -124,14 +126,15 @@ class MasterPayload(GlobalPayloadParameters, BasePayload):
         }
         return self.USE_NOS_BY_COMMIT_ID
     @property
-    def get_cluster_selection(self):
-        self.CLUSTER_SELECTION = {
-            u'global_pool_type': self.POOL_TYPE,
-            u'category': self.POOL_CATEGORY,
-            u'by_global_pool': True,
-            u'pool_name': self.POOL_NAME
-        }
-        return self.CLUSTER_SELECTION
+    def get_infra(self):
+        self.INFRA = [{
+            u'type': self.POOL_TYPE,
+            u'kind': self.POOL_KIND,
+            u'params': {u'category': self.POOL_CATEGORY},
+            # u'by_global_pool': True,
+            # u'pool_name': self.POOL_NAME
+        }]
+        return self.INFRA
     @property
     def get_nutest_patch_url(self):
         self.NUTEST_PATCH = self.nutest_patch
